@@ -19,4 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("upload.urls")),
+    path('popup/', include('upload.urls')),
+    path('csv/', include('upload.urls')),
 ]

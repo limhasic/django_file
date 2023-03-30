@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django File Upload</title>
-        <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -34,6 +33,21 @@
         table tr td {
             padding-top: 15px;
         }
+
+    </style>
+        <style>
+      .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
     </style>
 </head>
 <body>
@@ -49,6 +63,7 @@
             <th>Title</th>
             <th>File Path</th>
             <th>Upload Date & Time</th>
+            <th>파일 미리보기</th>
         </tr>
         {% for file in files %}
             <tr>
@@ -70,6 +85,14 @@
                 </td>
                 <!-- if file.uploadedFile == "" then : return "" -->
                 <td>{{ file.dateTimeOfUpload }}</td>
+                <td>
+                <!-- 미리보기 버튼 -->
+
+                    <a href="#" class="button" onClick="window.open('{% url 'upload:view_csv' file_id=file.id %}', 'popup', 'width=600,height=600')">미리보기</a>
+
+
+
+                </td>
             </tr>
         {% endfor %}
     </table>
